@@ -1,12 +1,12 @@
 <template>
     <div class="WorkingBox">
-      <Editor :initialValue="editorText"
-              :options="editorOptions"
-              width="100vw"
-              height="100vh"
-              id="MdEditor"
-              initialEditType="markdown"
-              previewStyle="vertical"
+      <Editor id="MdEditor"
+              ref="editor"
+              :initialValue="initialValue"
+              :options="options"
+              :height="height"
+              :initialEditType="initialEditType"
+              :previewStyle="previewStyle"
       />
     </div>
 </template>
@@ -23,10 +23,13 @@ export default {
   },
   data () {
     return {
-      editorText: 'This is initialValue.',
-      editorOptions: {
-        minHeight: '200px',
-        language: 'zh-CN',
+      initialValue: 'editorText',
+      height: '100vh',
+      initialEditType: 'markdown',
+      previewStyle: 'vertical',
+      options: {
+        language: 'zh_CN',
+        minHeight: '100vh',
         useCommandShortcut: true,
         useDefaultHTMLSanitizer: true,
         usageStatistics: true,
@@ -61,7 +64,7 @@ export default {
 
 <style lang="scss">
 .WorkingBox {
-  background-color: #EEF0DC;
+  background-color: #DDF0ED;
   -ms-flex: 4 1;
   flex: 4 1;
   display: -ms-flexbox;
