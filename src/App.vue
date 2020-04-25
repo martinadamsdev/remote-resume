@@ -1,33 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <a href="/">Home</a> |
-      <a href="/admin">Admin</a> |
-      <a href="/resume">Resume</a>
-    </div>
-    <router-view />
+  <div class="resume">
+    <SideBar />
+    <SectionBar />
+    <WorkingBox />
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import SideBar from '@components/SideBar'
+import SectionBar from '@components/SectionBar'
+import WorkingBox from '@components/WorkingBox'
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+export default {
+  name: 'Resume',
+  components: {
+    SideBar,
+    SectionBar,
+    WorkingBox
   }
 }
+</script>
+
+<style lang="scss">
+  .resume {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    min-height: 100vh;
+    max-height: 100vh;
+  }
 </style>
