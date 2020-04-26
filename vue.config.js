@@ -9,6 +9,7 @@ module.exports = {
       .set("@assets", resolve("src/assets"))
       .set("@image", resolve("src/assets/image"))
       .set("@scss", resolve("src/assets/scss"))
+      .set("@languages", resolve("src/languages"))
       .set("@components", resolve("src/components"));
   }
 }

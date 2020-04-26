@@ -2,41 +2,63 @@
     <div class="SideBar">
       <img class="Logo" src="../assets/image/logo.png" alt="">
       <ul class="SideMenu">
-        <li v-for="(item, index) in SideMenuData.zh"
+        <li>
+          <ul class="language">
+            <li v-for="item in language.lang" :key="item" data-lang="en_US">{{item}}</li>
+          </ul>
+        </li>
+        <!--Vue https://vuejs.org/v2/guide-->
+        <!--Class Bindings https://vuejs.org/v2/guide/class-and-style.html#Object-Syntax-->
+        <li v-for="(item, index) in SideMenuData"
             :key="item"
             :index="index"
+            :class="{sideItem: true, active: index === current, background: index === current && background}"
             @mouseover="mouseover(index)"
             @mouseout="mouseout"
-            class="SideItem"
-            :class="{Active: isActive === index}
         >{{item}}</li>
       </ul>
     </div>
 </template>
 
 <script>
+import languages from '../languages/languages'
+
 export default {
   name: 'SideBar',
   data () {
     return {
-      isActive: 0,
-      SideMenuData: {
-        zh: [
-          '编辑',
-          '下载',
-          'PDF',
-          '教程',
-          '捐赠'
+      current: 0,
+      background: false,
+      SideMenuData: [
+        'edit',
+        'download',
+        'pdf',
+        'donate'
+      ],
+      language: [
+
         ]
+        {
+        lang: [
+          'chinese',
+          'english'
+        ],
+        type: 'en_US'
       }
     }
   },
+  created () {
+    languages.setLanguage(this.language.type, this.SideMenuData)
+    // languages.setLanguage(this.language.type, this.language.lang)
+  },
   methods: {
     mouseover (index) {
-      this.isActive = index
+      this.current = index
+      this.background = true
     },
     mouseout () {
-      this.isActive = 0
+      this.current = 0
+      this.background = false
     }
   }
 }
@@ -64,7 +86,7 @@ export default {
     justify-content: flex-start;
   }
 
-  .SideItem {
+  .sideItem {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -74,10 +96,11 @@ export default {
     cursor: pointer
   }
 
-  .Active {
+  .active {
     color: #fff;
   }
-  .BackGround {
-    background: #DDF0ED;
+
+  .background {
+    background: #dea681;
   }
 </style>
