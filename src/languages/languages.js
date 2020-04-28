@@ -10,8 +10,7 @@ const languages = {
       array[index] = val
     })
     console.log(array)
-  },
-  lang: []
+  }
 }
 
 export default languages
