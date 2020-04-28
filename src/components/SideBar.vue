@@ -21,8 +21,6 @@
 </template>
 
 <script>
-import languages from '../languages/languages'
-
 export default {
   name: 'SideBar',
   data () {
@@ -35,20 +33,11 @@ export default {
         'pdf',
         'donate'
       ],
-      language: [
-
-        ]
-        {
-        lang: [
-          'chinese',
-          'english'
-        ],
-        type: 'en_US'
-      }
+      language: []
     }
   },
   created () {
-    languages.setLanguage(this.language.type, this.SideMenuData)
+    // languages.setLanguage(this.language.type, this.SideMenuData)
     // languages.setLanguage(this.language.type, this.language.lang)
   },
   methods: {
@@ -102,5 +91,6 @@ export default {
 
   .background {
     background: #dea681;
+
   }
 </style>

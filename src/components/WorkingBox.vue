@@ -74,5 +74,6 @@ export default {
 .WorkingBox #MdEditor {
   -ms-flex: 1 1;
   flex: 1 1;
+  box-sizing: border-box;
 }
 </style>
