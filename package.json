@@ -6,10 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales './src/locales/**/*.json'"
+    "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales 'src/languages/**/*.json'"
   },
   "dependencies": {
-    "@toast-ui/editor": "latest",
     "@toast-ui/vue-editor": "^2.0.1",
     "core-js": "^3.6.4",
     "vue": "^2.6.11",
