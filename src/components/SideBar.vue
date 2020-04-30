@@ -2,10 +2,12 @@
     <div class="SideBar">
       <img class="Logo" src="../assets/image/logo.png" alt="">
       <ul class="SideMenu">
-        <li>
-          <ul class="language">
-            <li v-for="item in language.lang" :key="item" data-lang="en_US">{{item}}</li>
-          </ul>
+        <li class="sideItem">
+          <div class="language">
+            <select v-model="$i18n.locale">
+              <option v-for="(lang, i) in languages" :key="`Lang${i}`" :value="lang">{{ lang }}</option>
+            </select>
+          </div>
         </li>
         <!--Vue https://vuejs.org/v2/guide-->
         <!--Class Bindings https://vuejs.org/v2/guide/class-and-style.html#Object-Syntax-->
@@ -15,7 +17,7 @@
             :class="{sideItem: true, active: index === current, background: index === current && background}"
             @mouseover="mouseover(index)"
             @mouseout="mouseout"
-        >{{item}}</li>
+        >{{$t(item)}}</li>
       </ul>
     </div>
 </template>
@@ -33,12 +35,8 @@ export default {
         'pdf',
         'donate'
       ],
-      language: []
+      languages: ['English', 'Chinese']
     }
-  },
-  created () {
-    // languages.setLanguage(this.language.type, this.SideMenuData)
-    // languages.setLanguage(this.language.type, this.language.lang)
   },
   methods: {
     mouseover (index) {
@@ -53,7 +51,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .SideBar {
     background-color: #afa37c;
     width: 100px;
@@ -75,6 +73,38 @@ export default {
     justify-content: flex-start;
   }
 
+  .language {
+    //用div的样式代替select的样式
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    display: flex;
+    background: transparent;
+  }
+
+  .language > select {
+    cursor: pointer;
+    color: purple;
+    text-align:center;
+    text-align-last:center;
+    //清除select的边框样式
+    border: none;
+    //清除select聚焦时候的边框颜色
+    outline: none;
+    background: transparent;
+    //将select的宽高等于div的宽高
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    //隐藏select的下拉图标
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+  .language > select > option {
+    text-align:center;
+    text-align-last:center;
+  }
+
   .sideItem {
     display: flex;
     align-items: center;
@@ -91,6 +121,5 @@ export default {
 
   .background {
     background: #dea681;
-
   }
 </style>
