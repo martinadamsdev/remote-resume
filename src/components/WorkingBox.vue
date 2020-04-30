@@ -7,6 +7,11 @@
               :height="height"
               :initialEditType="initialEditType"
               :previewStyle="previewStyle"
+              @load="onEditorLoad"
+              @focus="onEditorFocus"
+              @blur="onEditorBlur"
+              @change="onEditorChange"
+              @stateChange="onEditorStateChange"
       />
     </div>
 </template>
@@ -14,6 +19,7 @@
 <script>
 import 'codemirror/lib/codemirror.css'
 import '@toast-ui/editor/dist/toastui-editor.css'
+// import '@toast-ui/editor/dist/i18n/zh-cn'
 import { Editor } from '@toast-ui/vue-editor'
 
 export default {
@@ -28,7 +34,7 @@ export default {
       initialEditType: 'markdown',
       previewStyle: 'vertical',
       options: {
-        language: 'zh_CN',
+        language: 'zh_cn',
         minHeight: '100vh',
         useCommandShortcut: true,
         useDefaultHTMLSanitizer: true,
@@ -58,11 +64,40 @@ export default {
         ]
       }
     }
+  },
+  mounted () {
+    console.log(this.getHtml())
+  },
+  methods: {
+    onEditorLoad () {
+      this.initialValue = '欢迎使用 1024 RESUME！'
+    },
+    onEditorFocus () {
+      this.initialValue = '欢迎使用 1024 RESUME！'
+    },
+    onEditorBlur () {
+      this.initialValue = '欢迎使用 1024 RESUME！'
+    },
+    onEditorChange () {
+      this.initialValue = '欢迎使用 1024 RESUME！'
+    },
+    onEditorStateChange () {
+      this.initialValue = '欢迎使用 1024 RESUME！'
+    },
+    scroll () {
+      this.$refs.editor.invoke('scrollTop', 10)
+    },
+    moveTop () {
+      this.$refs.editor.invoke('moveCursorToStart')
+    },
+    getHtml () {
+      return this.$refs.editor.invoke('getHtml')
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .WorkingBox {
   background-color: #DDF0ED;
   -ms-flex: 4 1;
