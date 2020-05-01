@@ -59,9 +59,6 @@ export default {
     getValue () {
       this.editor.mdEditor.cm.getValue()
     },
-    setHtml (value) {
-      this.editor.setHtml(value)
-    },
     getHtml () {
       return this.editor.getHtml()
     }

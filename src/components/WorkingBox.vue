@@ -28,7 +28,7 @@ export default {
   mounted () {
     eventBus.$on('insert', data => {
       this.setValue(data)
-      console.log(this.getValue())
+      console.log(this)
     })
   },
   methods: {
@@ -38,14 +38,14 @@ export default {
     moveTop () {
       this.$refs.editor.invoke('moveCursorToStart')
     },
-    getHtml () {
-      return this.$refs.editor.invoke('getHtml')
-    },
     setValue (val) {
       return this.$refs.editor.setValue(val)
     },
     getValue () {
       return this.$refs.editor.getValue()
+    },
+    saveValue () {
+      console.log(this)
     }
   }
 }

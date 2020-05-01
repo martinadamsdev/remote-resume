@@ -1,6 +1,7 @@
 <template>
     <div class="SectionBar">
-      <div> Markdown </div>
+      <div class="title"> Markdown </div>
+      <div class="title">{{$t('title')}}</div>
       <ul class="guideList">
         <li v-for="(item,index) in guideList"
             :key="item"
@@ -57,6 +58,14 @@ export default {
     max-width: 199px;
     min-width: 199px;
     border-right: 1px solid #ccc;
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
   }
 
   .guideList > li {
