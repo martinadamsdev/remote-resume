@@ -46,18 +46,16 @@ export default {
       el: this.$refs.toastuiEditor
     }
     this.editor = new Editor(options)
-    console.log(this.setValue('#  xxxxxxxxxxx'))
-    console.log(this.editor.mdEditor.cm.getValue())
   },
   methods: {
     getRootElement () {
       return this.$refs.toastuiEditor
     },
     setValue (value) {
-      this.editor.mdEditor.cm.setValue(value)
+      return this.editor.mdEditor.cm.setValue(value)
     },
     getValue () {
-      this.editor.mdEditor.cm.getValue()
+      return this.editor.mdEditor.cm.getValue()
     },
     getHtml () {
       return this.editor.getHtml()

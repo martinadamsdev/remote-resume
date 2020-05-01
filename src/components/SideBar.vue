@@ -17,12 +17,15 @@
             :class="{sideItem: true, active: index === current, background: index === current && background}"
             @mouseover="mouseover(index)"
             @mouseout="mouseout"
+            @click="download(item)"
         >{{$t(item)}}</li>
       </ul>
     </div>
 </template>
 
 <script>
+import eventBus from '@/eventBus'
+
 export default {
   name: 'SideBar',
   data () {
@@ -46,6 +49,15 @@ export default {
     mouseout () {
       this.current = 0
       this.background = false
+    },
+    download (item) {
+      if (item === 'download') {
+        return eventBus.$emit('download')
+      }
+
+      if (item === 'pdf') {
+        return eventBus.$emit('pdf')
+      }
     }
   }
 }
