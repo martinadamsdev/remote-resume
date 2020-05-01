@@ -1,89 +1,37 @@
 <template>
     <div class="WorkingBox">
-      <Editor id="MdEditor"
+      <MarkdownEditor id="MdEditor"
               ref="editor"
-              :initialValue="initialValue"
-              :options="options"
+              :initialValue="value"
               :height="height"
-              :initialEditType="initialEditType"
-              :previewStyle="previewStyle"
-              @load="onEditorLoad"
-              @focus="onEditorFocus"
-              @blur="onEditorBlur"
-              @change="onEditorChange"
-              @stateChange="onEditorStateChange"
+              :initialEditType="mode"
       />
     </div>
 </template>
 
 <script>
-import 'codemirror/lib/codemirror.css'
-import '@toast-ui/editor/dist/toastui-editor.css'
-// import '@toast-ui/editor/dist/i18n/zh-cn'
-import { Editor } from '@toast-ui/vue-editor'
+import eventBus from '@/eventBus'
+import MarkdownEditor from '@components/MarkdownEditor'
 
 export default {
   name: 'WorkingBox',
   components: {
-    Editor
+    MarkdownEditor
   },
   data () {
     return {
-      initialValue: 'editorText',
+      value: 'editorText',
       height: '100vh',
-      initialEditType: 'markdown',
-      previewStyle: 'vertical',
-      options: {
-        language: 'zh_cn',
-        minHeight: '100vh',
-        useCommandShortcut: true,
-        useDefaultHTMLSanitizer: true,
-        usageStatistics: true,
-        hideModeSwitch: false,
-        toolbarItems: [
-          'heading',
-          'bold',
-          'italic',
-          'strike',
-          'divider',
-          'hr',
-          'quote',
-          'divider',
-          'ul',
-          'ol',
-          'task',
-          'indent',
-          'outdent',
-          'divider',
-          'table',
-          'image',
-          'link',
-          'divider',
-          'code',
-          'codeblock'
-        ]
-      }
+      mode: 'markdown'
     }
   },
   mounted () {
-    console.log(this.getHtml())
+    eventBus.$on('insert', data => {
+      this.setValue(data)
+      console.log(this.getValue())
+    })
   },
   methods: {
-    onEditorLoad () {
-      this.initialValue = '欢迎使用 1024 RESUME！'
-    },
-    onEditorFocus () {
-      this.initialValue = '欢迎使用 1024 RESUME！'
-    },
-    onEditorBlur () {
-      this.initialValue = '欢迎使用 1024 RESUME！'
-    },
-    onEditorChange () {
-      this.initialValue = '欢迎使用 1024 RESUME！'
-    },
-    onEditorStateChange () {
-      this.initialValue = '欢迎使用 1024 RESUME！'
-    },
     scroll () {
       this.$refs.editor.invoke('scrollTop', 10)
     },
@@ -92,6 +40,12 @@ export default {
     },
     getHtml () {
       return this.$refs.editor.invoke('getHtml')
+    },
+    setValue (val) {
+      return this.$refs.editor.setValue(val)
+    },
+    getValue () {
+      return this.$refs.editor.getValue()
     }
   }
 }
@@ -99,7 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 .WorkingBox {
-  background-color: #DDF0ED;
+  background-color: #e5e5e5;
   -ms-flex: 4 1;
   flex: 4 1;
   display: -ms-flexbox;
