@@ -5,6 +5,7 @@
               :initialValue="value"
               :height="height"
               :initialEditType="mode"
+              @change="onEditorChange"
       />
     </div>
 </template>
@@ -12,6 +13,7 @@
 <script>
 import eventBus from '@/eventBus'
 import MarkdownEditor from '@components/MarkdownEditor'
+// const saveMarkdown = localStorage
 
 export default {
   name: 'WorkingBox',
@@ -20,23 +22,23 @@ export default {
   },
   data () {
     return {
-      value: 'editorText',
+      value: '',
       height: '100vh',
       mode: 'markdown'
     }
   },
   mounted () {
     eventBus.$on('insert', data => {
-      this.setValue(data)
-      console.log(this)
+      this.setValue(`${this.getValue()}\n${data}`)
+    })
+
+    eventBus.$on('download', () => {
+      this.download('1024.Cool-RESUME.md', this.getValue())
     })
   },
   methods: {
-    scroll () {
-      this.$refs.editor.invoke('scrollTop', 10)
-    },
-    moveTop () {
-      this.$refs.editor.invoke('moveCursorToStart')
+    onEditorChange () {
+      console.log(this.getValue())
     },
     setValue (val) {
       return this.$refs.editor.setValue(val)
@@ -44,8 +46,13 @@ export default {
     getValue () {
       return this.$refs.editor.getValue()
     },
-    saveValue () {
-      console.log(this)
+    download (fileName, content) {
+      const aTag = document.createElement('a')
+      const blob = new Blob([content])
+      aTag.download = fileName
+      aTag.href = URL.createObjectURL(blob)
+      aTag.click()
+      URL.revokeObjectURL(blob)
     }
   }
 }
