@@ -12,6 +12,11 @@
             @click="insert(item)"
         >{{ $t(item) }}</li>
       </ul>
+      <div class="title"><a href="https://github.com/1024-cool/markdown-resume" title="Github:w3cfed">Github</a></div>
+      <div class="wechat">
+        <div class="title">{{$t('nickname')}}</div>
+        <img src="../assets/image/wechat.jpg" alt="前端老王" title="前端老王">
+      </div>
     </div>
 </template>
 
@@ -85,5 +90,15 @@ export default {
 
   .background {
     background: #dea681;
+  }
+
+  .wechat {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .wechat > img {
+    width: 120px;
   }
 </style>
