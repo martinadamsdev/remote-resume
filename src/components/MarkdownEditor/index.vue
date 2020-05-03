@@ -58,7 +58,7 @@ export default {
       return this.editor.mdEditor.cm.getValue()
     },
     getHtml () {
-      return this.editor.getHtml()
+      return this.editor.preview.el
     }
   }
 }
