@@ -11,7 +11,6 @@ module.exports = {
       .set('@scss', resolve('src/assets/scss'))
       .set('@components', resolve('src/components'))
   },
-
   pluginOptions: {
     i18n: {
       locale: 'Chinese',

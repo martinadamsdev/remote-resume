@@ -9,11 +9,16 @@
     "i18n:report": "vue-cli-service i18n:report --src './src/**/*.?(js|vue)' --locales 'src/languages/**/*.json'"
   },
   "dependencies": {
-    "@toast-ui/vue-editor": "^2.0.1",
+    "@toast-ui/editor": "^2.1.0",
+    "axios": "^0.19.2",
+    "body-parser": "^1.19.0",
     "core-js": "^3.6.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "puppeteer": "^3.0.2",
+    "qs": "^6.9.3",
     "vue": "^2.6.11",
-    "vue-i18n": "^8.17.3",
-    "@toast-ui/editor": "latest"
+    "vue-i18n": "^8.17.3"
   },
   "devDependencies": {
     "@intlify/vue-i18n-loader": "^1.0.0",
