@@ -4,7 +4,7 @@ import i18n from './i18n'
 import axios from 'axios'
 import '@scss/style.scss'
 
-Vue.config.productionTip = false
+Vue.config.productionTip = true
 
 Vue.prototype.$save = window.localStorage
 Vue.prototype.$axios = axios
