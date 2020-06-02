@@ -4,6 +4,8 @@
 
 ## [](#supporting-vuejs)Supporting 1024 Resume
 
+![1024 Resume](https://user-images.githubusercontent.com/51536312/83478916-aca38200-a4c9-11ea-8478-803b8a59c5c7.png)
+
 ## Project setup
 ```
 npm install
