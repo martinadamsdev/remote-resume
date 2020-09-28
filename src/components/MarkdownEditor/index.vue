@@ -2,13 +2,13 @@
   <div ref="toastuiEditor"></div>
 </template>
 <script>
-import 'codemirror/lib/codemirror.css'
-import './toastui-editor.scss'
-import Editor from '@toast-ui/editor'
-import { optionsMixin } from './options'
+import "codemirror/lib/codemirror.css";
+import "./toastui-editor.scss";
+import Editor from "@toast-ui/editor";
+import { optionsMixin } from "./options";
 
 export default {
-  name: 'MarkdownEditor',
+  name: "MarkdownEditor",
   mixins: [optionsMixin],
   props: {
     previewStyle: {
@@ -27,39 +27,39 @@ export default {
       type: Object
     }
   },
-  data () {
+  data() {
     return {
       editor: null
-    }
+    };
   },
   watch: {
-    previewStyle (newValue) {
-      this.editor.changePreviewStyle(newValue)
+    previewStyle(newValue) {
+      this.editor.changePreviewStyle(newValue);
     },
-    height (newValue) {
-      this.editor.height(newValue)
+    height(newValue) {
+      this.editor.height(newValue);
     }
   },
-  mounted () {
+  mounted() {
     const options = {
       ...this.computedOptions,
       el: this.$refs.toastuiEditor
-    }
-    this.editor = new Editor(options)
+    };
+    this.editor = new Editor(options);
   },
   methods: {
-    getRootElement () {
-      return this.$refs.toastuiEditor
+    getRootElement() {
+      return this.$refs.toastuiEditor;
     },
-    setValue (value) {
-      return this.editor.mdEditor.cm.setValue(value)
+    setValue(value) {
+      return this.editor.mdEditor.cm.setValue(value);
     },
-    getValue () {
-      return this.editor.mdEditor.cm.getValue()
+    getValue() {
+      return this.editor.mdEditor.cm.getValue();
     },
-    getHtml () {
-      return this.editor.preview.el
+    getHtml() {
+      return this.editor.preview.el;
     }
   }
-}
+};
 </script>
