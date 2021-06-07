@@ -4,9 +4,9 @@ const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const IS_PROD = ["production", "prod"].includes(process.env.NODE_ENV);
 
 const productionGzipExtensions = /\.(js|css|json|txt|html|ico|svg)(\?.*)?$/i;
-
+// process.env.NODE_ENV === "production" ? "/resume/" :
 module.exports = {
-  publicPath: process.env.NODE_ENV === "production" ? "/resume/" : "/",
+  publicPath: "/",
   chainWebpack: config => {
     // 添加别名
     config.resolve.alias
