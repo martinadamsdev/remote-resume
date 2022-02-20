@@ -51,13 +51,11 @@ module.exports = {
       // CDN
       const cdn = {
         // 访问https://unpkg.com/element-ui/lib/theme-chalk/index.css获取最新版本
-        css: ["//cdn.jsdelivr.net/npm/codemirror@5.53.0/lib/codemirror.css"],
+        css: [],
         js: [
-          "//cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js",
-          "//cdn.jsdelivr.net/npm/@toast-ui/editor@2.1.0/dist/toastui-editor.min.js",
-          "//cdn.jsdelivr.net/npm/vue-i18n@8.17.4/dist/vue-i18n.min.js",
-          "//cdn.jsdelivr.net/npm/codemirror@5.53.0/lib/codemirror.min.js",
-          "//cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js",
+          "//cdn.jsdelivr.net/npm/axios@0.26.0/dist/axios.min.js",
+          "//cdn.jsdelivr.net/npm/vue-i18n@8.27.0/dist/vue-i18n.min.js",
+          "//cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.min.js",
         ],
       };
 
