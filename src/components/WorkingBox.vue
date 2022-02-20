@@ -1,39 +1,35 @@
 <template>
   <div class="WorkingBox">
-    <MarkdownEditor
-      id="MdEditor"
-      ref="editor"
-      :initialValue="value"
-      :height="height"
-      :initialEditType="mode"
-      @focus="onEditorFocus"
-      @blur="onEditorBlur"
-      @change="onEditorChange"
-      @stateChange="onEditorStateChange"
+    <Editor
+      class="bytemd"
+      :mode="mode"
+      :value="value"
+      :plugins="plugins"
+      @change="handleChange"
     />
   </div>
 </template>
 
 <script>
 import eventBus from "@/eventBus";
-import MarkdownEditor from "@components/MarkdownEditor";
+import "bytemd/dist/index.min.css";
+import "juejin-markdown-themes/dist/juejin.min.css";
+import { Editor } from "@bytemd/vue";
 import qs from "qs";
 
 export default {
   name: "WorkingBox",
-  components: {
-    MarkdownEditor
-  },
+  components: { Editor },
   data() {
     return {
-      value: this.$save.getItem("markdown"),
-      height: "100vh",
-      mode: "markdown"
+      mode: "auto",
+      value: "",
+      plugins: [],
     };
   },
   mounted() {
-    eventBus.$on("insert", data => {
-      this.setValue(`${this.getValue()}\n${data}`);
+    eventBus.$on("insert", (data) => {
+      this.handleChange(`${this.value}\n${data}`);
     });
 
     eventBus.$on("download", () => {
@@ -46,10 +42,10 @@ export default {
         .post(
           "http://localhost:3000",
           qs.stringify({
-            test: html
+            test: html,
           })
         )
-        .then(function(res) {
+        .then(function (res) {
           console.log(html);
           if (res.data.code === 200) {
             const aTag = document.createElement("a");
@@ -59,12 +55,15 @@ export default {
             URL.revokeObjectURL(res.data.file);
           }
         })
-        .catch(function(error) {
+        .catch(function (error) {
           console.log(error);
         });
     });
   },
   methods: {
+    handleChange(v) {
+      this.value = v;
+    },
     onEditorFocus() {
       this.saveMarkdown();
     },
@@ -98,8 +97,8 @@ export default {
         aTag.click();
         URL.revokeObjectURL(blob);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -110,11 +109,11 @@ export default {
   flex: 4 1;
   display: -ms-flexbox;
   display: flex;
-}
-
-.WorkingBox #MdEditor {
-  -ms-flex: 1 1;
-  flex: 1 1;
-  box-sizing: border-box;
+  ::v-deep .bytemd {
+    -ms-flex: 1 1;
+    flex: 1 1;
+    box-sizing: border-box;
+    height: 100vh;
+  }
 }
 </style>

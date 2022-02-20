@@ -1,15 +1,13 @@
 <template>
   <div class="SectionBar">
-    <div class="title">Markdown</div>
-    <div class="title">{{ $t("title") }}</div>
+    <div class="title">Easy Resume</div>
     <ul class="guideList">
       <li
         v-for="(item, index) in guideList"
         :key="item"
-        :index="index"
         :class="{
           active: index === current,
-          background: index === current && background
+          background: index === current && background,
         }"
         @mouseover="mouseover(index)"
         @mouseout="mouseout"
@@ -20,14 +18,18 @@
     </ul>
     <div class="title">
       <a
-        href="https://github.com/1024-cool/markdown-resume"
-        title="Github:w3cfed"
+        href="https://github.com/martinageradams/easy-resume"
+        title="github:martinageradams"
         >Github</a
       >
     </div>
     <div class="wechat">
       <div class="title">{{ $t("nickname") }}</div>
-      <img src="../assets/image/wechat.jpg" alt="前端老王" title="前端老王" />
+      <img
+        src="https://open.weixin.qq.com/qr/code?username=gh_11f860dcf461"
+        alt="前端老王"
+        title="前端老王"
+      />
     </div>
   </div>
 </template>
@@ -48,8 +50,8 @@ export default {
         "experience",
         "ability",
         "skill",
-        "thanks"
-      ]
+        "education",
+      ],
     };
   },
   methods: {
@@ -63,8 +65,8 @@ export default {
     },
     insert(type) {
       eventBus.$emit("insert", defaultData[type]);
-    }
-  }
+    },
+  },
 };
 </script>
 

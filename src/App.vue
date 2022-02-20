@@ -1,23 +1,20 @@
 <template>
   <div class="resume">
-    <SideBar />
     <SectionBar />
     <WorkingBox />
   </div>
 </template>
 
 <script>
-import SideBar from "@components/SideBar";
 import SectionBar from "@components/SectionBar";
 import WorkingBox from "@components/WorkingBox";
 
 export default {
-  name: "Resume",
+  name: "App",
   components: {
-    SideBar,
     SectionBar,
-    WorkingBox
-  }
+    WorkingBox,
+  },
 };
 </script>
 
