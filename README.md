@@ -1,7 +1,5 @@
 ![Alt](https://repobeats.axiom.co/api/embed/6c1e34168421783d6a1967fee631bf0fb213eef5.svg "Repobeats analytics image")
 
-![1024 Resume](https://user-images.githubusercontent.com/51536312/83478916-aca38200-a4c9-11ea-8478-803b8a59c5c7.png)
-
 ## Project setup
 ```
 npm install
